@@ -85,6 +85,14 @@ class MetsExporter
      */
     protected $counter = 0;
 
+
+    /**
+     * objId
+     * @var string
+     */
+    protected $objId = '';
+
+
     /**
      * Constructor
      */
@@ -944,4 +952,13 @@ class MetsExporter
         return $this->slubData->saveXML();
     }
 
+    /**
+     *
+     * @param string $objId
+     * @return void
+     */
+    public function setObjId($objId)
+    {
+        $this->objId = $objId;
+    }
 }
