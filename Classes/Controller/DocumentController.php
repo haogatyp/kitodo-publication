@@ -37,12 +37,29 @@ class DocumentController extends \EWW\Dpf\Controller\AbstractController
     protected $persistenceManager;
 
     /**
+     * documentTypeRepository
+     *
+     * @var \EWW\Dpf\Domain\Repository\DocumentTypeRepository
+     * @inject
+     */
+    protected $documentTypeRepository = null;
+
+    /**
      * action list
      *
      * @return void
      */
     public function listAction()
     {
+/*        $documentTypes = $this->documentTypeRepository->findAll();
+
+        foreach ($documentTypes as $dt) {
+            echo $dt->getUid()." ".$dt->getDisplayName()." <br>";
+        }
+
+        return;
+*/
+
         $documents = $this->documentRepository->findAll();
 
         if ($this->request->hasArgument('message')) {
@@ -54,6 +71,7 @@ class DocumentController extends \EWW\Dpf\Controller\AbstractController
         }
 
         $this->view->assign('documents', $documents);
+
     }
 
     public function listNewAction()

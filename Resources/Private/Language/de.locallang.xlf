@@ -191,7 +191,7 @@
 		</trans-unit>
 		<trans-unit id="manager.document.title" approved="yes">
 			<source>Title</source>
-			<target>Title</target>
+			<target>Titel</target>
 		</trans-unit>
 		<trans-unit id="manager.document.type" approved="yes">
 			<source>Type</source>

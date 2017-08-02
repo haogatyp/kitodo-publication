@@ -68,7 +68,7 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
         }
 
         $userGlobals->setAndSaveSessionData($key, $data);
-
+        
         return;
     }
 
@@ -125,6 +125,15 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
             return $param;
         } else {
             return GeneralUtility::removeXSS($param);
+        }
+    }
+
+
+    public function initializeAction()
+    {
+        parent::initializeAction();
+        if (TYPO3_MODE === 'BE') {
+            $_POST['L'] = $this->clientRepository->getLanguage();
         }
     }
 

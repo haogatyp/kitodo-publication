@@ -69,13 +69,20 @@ abstract class AbstractDocumentFormController extends \TYPO3\CMS\Extbase\Mvc\Con
     protected $persistenceManager;
 
     /**
+     * clientRepository
+     *
+     * @var \EWW\Dpf\Domain\Repository\ClientRepository
+     * @inject
+     */
+    protected $clientRepository = null;
+
+    /**
      * action list
      *
      * @return void
      */
     public function listAction()
     {
-
         $documents = $this->documentRepository->findAll();
 
         $documentTypes = $this->documentTypeRepository->findAll();
@@ -367,6 +374,9 @@ abstract class AbstractDocumentFormController extends \TYPO3\CMS\Extbase\Mvc\Con
     public function initializeAction()
     {
         parent::initializeAction();
+        if (TYPO3_MODE === 'BE') {
+            $_POST['L'] = $this->clientRepository->getLanguage();
+        }
     }
 
     protected function redirectToList($message = null)
